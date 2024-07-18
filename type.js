@@ -40,8 +40,8 @@ const content = document.querySelector(".header__content");
 const nav = document.querySelector(".header__nav");
 
 content.addEventListener('mouseover', () => {
-    content.style.marginTop = `${moveRandomly(0, window.innerHeight - content.clientHeight - nav.clientHeight)}px`;
-    content.style.marginLeft = `${moveRandomly(0, window.innerWidth - content.clientWidth)}px`;
+    content.style.marginTop = `${moveRandomly(content.clientHeight, window.innerHeight - content.clientHeight - nav.clientHeight)}px`;
+    content.style.marginLeft = `${moveRandomly(content.clientWidth, window.innerWidth - content.clientWidth)}px`;
 });
 
 function moveRandomly(min, max) {
