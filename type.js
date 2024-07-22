@@ -36,15 +36,25 @@ new Type({
 
 // mouseover
 
-const content = document.querySelector(".header__content");
-const nav = document.querySelector(".header__nav");
-
-content.addEventListener('mouseover', () => {
-    content.style.marginTop = `${moveRandomly(content.clientHeight, window.innerHeight - content.clientHeight - nav.clientHeight)}px`;
-    content.style.marginLeft = `${moveRandomly(content.clientWidth, window.innerWidth - content.clientWidth)}px`;
-});
-
-function moveRandomly(min, max) {
+class mouseOver {
+  constructor({ content, nav }) {
+    this.content = document.querySelector(content);
+    this.nav = document.querySelector(nav);
+    this.content.addEventListener("mouseover", () => {
+      this.content.style.marginTop = `${this.moveRandomly(
+        this.content.clientHeight, window.innerHeight - this.content.clientHeight - this.nav.clientHeight
+      )}px`;
+      this.content.style.marginLeft = `${this.moveRandomly(
+        this.content.clientWidth, window.innerWidth - this.content.clientWidth
+      )}px`;
+    });
+  }
+  moveRandomly(min, max) {
     return Math.round(Math.random() * (max - min) + min);
+  }
 }
 
+new mouseOver({
+  content: ".header__content",
+  nav: ".header__nav",
+});
